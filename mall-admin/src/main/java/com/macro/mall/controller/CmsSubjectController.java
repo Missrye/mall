@@ -6,6 +6,7 @@ import com.macro.mall.model.CmsSubject;
 import com.macro.mall.service.CmsSubjectService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,8 @@ import java.util.List;
  * Created by macro on 2018/6/1.
  */
 @Controller
-@Api(tags = "CmsSubjectController", description = "商品专题管理")
+@Api(tags = "CmsSubjectController")
+@Tag(name = "CmsSubjectController", description = "商品专题管理")
 @RequestMapping("/subject")
 public class CmsSubjectController {
     @Autowired
@@ -34,7 +36,7 @@ public class CmsSubjectController {
         return CommonResult.success(subjectList);
     }
 
-    @ApiOperation(value = "根据专题名称分页获取专题")
+    @ApiOperation(value = "根据专题名称分页获取商品专题")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<CmsSubject>> getList(@RequestParam(value = "keyword", required = false) String keyword,
